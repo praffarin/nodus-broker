@@ -120,31 +120,23 @@ nodus-broker/
 
 ### Installation depuis les sources
 
-# Cloner le dépôt
+#### Cloner le dépôt
 
 git clone https://github.com/praffarin/nodus-broker.git
 cd nodus-broker
 
-# Compiler le broker
-
-dotnet build src/nodus-broker/nodus-broker.csproj -c Release
-
-# Compiler le launcher
-
-dotnet build src/bg-nodus-broker/bg-nodus-broker.csproj -c Release
-
-# Compiler le client CLI
-
-dotnet build src/nodus-cli/nodus-cli.csproj -c Release
-
 ### Distribution binaire
 
 ```bash
-# Créer une distribution autonome (Windows(x86,x64) et linux)
+# Créer une distribution autonome Windows(x86,x64) et linux
 gendist.bat
 
 # Les binaires seront dans ./dist/
 ```
+
+#### Compiler le client CLI si besoin
+
+dotnet build src/nodus-cli/nodus-cli.csproj -c Release
 
 ### Installation comme service Windows
 
