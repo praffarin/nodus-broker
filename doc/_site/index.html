@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Documentation nodus-broker | Documentation Broker MQTT nodus-broker </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Documentation nodus-broker | Documentation Broker MQTT nodus-broker ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/praffarin/nodus-broker/blob/develop/doc/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="nodus-broker">
+            nodus-broker
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="documentation-nodus-broker">Documentation nodus-broker</h1>
+
+<p align="center">
+  <img src="img/nodus_broker_logo.png" alt="Logo nodus-broker" width="500">
+</p>
+<p><strong>nodus-broker</strong> est un broker MQTT développé en C# sur .NET 9 et fondé sur MQTTnet. Il est destiné aux applications industrielles, aux bancs de test et aux systèmes embarqués nécessitant un broker local léger.</p>
+<p>Cette documentation couvre l'installation, la configuration, l'utilisation, la sécurité et les tests des différents composants du dépôt.</p>
+<h2 id="composants-du-projet">Composants du projet</h2>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nodus-broker</code></td>
+<td>Broker MQTT principal, intégré à ASP.NET Core. Il accepte les connexions TCP, TLS et WebSocket.</td>
+</tr>
+<tr>
+<td><code>bg-nodus-broker</code></td>
+<td>Lanceur qui démarre ou arrête le broker et permet de sélectionner un fichier de configuration.</td>
+</tr>
+<tr>
+<td><code>nodus-cli</code></td>
+<td>Client MQTT en ligne de commande pour publier des messages, s'abonner à des topics et valider le comportement du broker.</td>
+</tr>
+<tr>
+<td><code>PasswordHashGenerator</code></td>
+<td>Outil interactif de génération des empreintes de mots de passe PBKDF2 utilisées par le broker.</td>
+</tr>
+<tr>
+<td><code>nodus-broker.Tests</code></td>
+<td>Tests unitaires et tests d'intégration du broker.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fonctionnalités-du-broker">Fonctionnalités du broker</h2>
+<ul>
+<li>Prise en charge de MQTTnet 5.2 et du protocole MQTT.</li>
+<li>Transport TCP natif sur le port configuré.</li>
+<li>Transport MQTT over TLS avec un certificat X.509 au format PFX.</li>
+<li>Transport MQTT sur WebSocket, avec prise en charge facultative de TLS.</li>
+<li>Authentification selon deux modes :
+<ul>
+<li><code>Credentials</code> : contrôle du nom d'utilisateur et du mot de passe ;</li>
+<li><code>Anonymous</code> : aucune vérification d'identifiants, avec attribution de rôles configurables.</li>
+</ul>
+</li>
+<li>Contrôle des droits <code>PUBLISH</code> et <code>SUBSCRIBE</code> par rôle et par topic.</li>
+<li>Prise en charge des wildcards MQTT <code>+</code> et <code>#</code> ainsi que du placeholder <code>{clientid}</code>.</li>
+<li>Protection anti force brute avec verrouillage temporaire des adresses IP.</li>
+<li>Sessions persistantes et files de connexion configurables.</li>
+<li>Publication d'informations d'état du broker sur des topics internes.</li>
+</ul>
+<h2 id="prérequis">Prérequis</h2>
+<ul>
+<li><a href="https://dotnet.microsoft.com/download/dotnet/9.0">.NET 9 SDK</a> pour compiler les projets.</li>
+<li><a href="https://dotnet.microsoft.com/download/dotnet/9.0">.NET 9 Runtime</a> pour exécuter un livrable dépendant du framework.</li>
+<li>Node.js et npm uniquement si les outils de build Node.js du dépôt sont utilisés.</li>
+<li>Un certificat PFX pour activer le transport TLS.</li>
+</ul>
+<h2 id="compiler-les-projets">Compiler les projets</h2>
+<p>La commande suivante lancée depuis la racine du dépôt permet de générer dans le répertoire dist les executables nodus-broker et bg-nodus-broker sous différentes architectures (win-x86, win-x64 et linux-x64)</p>
+<pre><code class="lang-powershell">gendist.bat
+</code></pre>
+<p>Les commandes suivantes sont lancées depuis la racine du dépôt et permettent de générer séparément les executables.</p>
+<pre><code class="lang-powershell"># Broker MQTT
+dotnet build src/nodus-broker/nodus-broker.csproj -c Release
+
+# Lanceur du broker
+dotnet build src/bg-nodus-broker/bg-nodus-broker.csproj -c Release
+
+# Client en ligne de commande
+dotnet build src/nodus-cli/nodus-cli.csproj -c Release
+
+# Exécutable de tests
+dotnet build tests/nodus-broker.Tests/nodus-broker.Tests.csproj -c Release
+</code></pre>
+<p>Pour produire un exécutable autonome destiné à une machine sans runtime .NET installé :</p>
+<pre><code class="lang-powershell">dotnet publish src/nodus-broker/nodus-broker.csproj `
+  -c Release `
+  -r win-x64 `
+  --self-contained true `
+  -o dist/nodus-broker
+
+dotnet publish src/bg-nodus-broker/bg-nodus-broker.csproj `
+  -c Release `
+  -r win-x64 `
+  --self-contained true `
+  -o dist/bg-nodus-broker
+
+dotnet publish src/nodus-cli/nodus-cli.csproj `
+  -c Release `
+  -r win-x64 `
+  --self-contained true `
+  -o dist/nodus-cli
+</code></pre>
+<h2 id="démarrer-le-broker">Démarrer le broker</h2>
+<h3 id="utilisation-directe">Utilisation directe</h3>
+<p>Sans argument, <code>nodus-broker</code> charge le fichier <code>appsettings.json</code> situé dans son répertoire de travail.</p>
+<pre><code class="lang-powershell">cd src/nodus-broker
+dotnet run
+</code></pre>
+<p>Un autre fichier de configuration peut être sélectionné avec <code>--config</code> ou <code>-c</code> :</p>
+<pre><code class="lang-powershell">dotnet run --project src/nodus-broker -- --config &quot;C:\config\production.json&quot;
+dotnet run --project src/nodus-broker -- -c &quot;../configs/site-a.json&quot;
+</code></pre>
+<p>Si le fichier indiqué est introuvable, le broker écrit un message d'erreur et termine le processus avec le code de sortie <code>1</code>.</p>
+<h3 id="utilisation-du-lanceur">Utilisation du lanceur</h3>
+<p><code>bg-nodus-broker</code> démarre le broker dans un processus séparé. Il accepte également une configuration personnalisée :</p>
+<pre><code class="lang-powershell"># Configuration par défaut
+dotnet run --project src/bg-nodus-broker
+
+# Configuration personnalisée
+dotnet run --project src/bg-nodus-broker -- --config &quot;C:\config\production.json&quot;
+dotnet run --project src/bg-nodus-broker -- -c &quot;C:\config\test.json&quot;
+
+# Arrêt des processus du broker
+dotnet run --project src/bg-nodus-broker -- --stop
+</code></pre>
+<p>Le lanceur vérifie l'existence du fichier de configuration avant de démarrer le broker.</p>
+<h2 id="configuration">Configuration</h2>
+<p>Le broker attend un fichier JSON structuré autour des sections <code>Mqtt</code>, <code>Auth</code>, <code>Security</code> et <code>Acl</code>. Exemple :</p>
+<pre><code class="lang-json">{
+  &quot;Mqtt&quot;: {
+    &quot;Port&quot;: 1883,
+    &quot;TlsPort&quot;: 8883,
+    &quot;EnableTls&quot;: false,
+    &quot;CertificatePath&quot;: &quot;&quot;,
+    &quot;CertificatePassword&quot;: &quot;&quot;,
+    &quot;ConnectionBacklog&quot;: 100,
+    &quot;MaxConnections&quot;: 500,
+    &quot;PersistentSessions&quot;: true,
+    &quot;WebSocket&quot;: {
+      &quot;Enable&quot;: false,
+      &quot;Port&quot;: 8080,
+      &quot;Path&quot;: &quot;/mqtt&quot;,
+      &quot;EnableTls&quot;: false,
+      &quot;TlsPort&quot;: 8081
+    }
+  },
+  &quot;Auth&quot;: {
+    &quot;Mode&quot;: &quot;Credentials&quot;,
+    &quot;AnonymousRoles&quot;: [],
+    &quot;Users&quot;: [
+      {
+        &quot;Username&quot;: &quot;device01&quot;,
+        &quot;PasswordHash&quot;: &quot;&lt;salt-base64&gt;.&lt;hash-base64&gt;&quot;,
+        &quot;Roles&quot;: [ &quot;device&quot; ]
+      }
+    ]
+  },
+  &quot;Security&quot;: {
+    &quot;MaxFailedAttemptsPerIp&quot;: 5,
+    &quot;LockoutDurationSeconds&quot;: 60
+  },
+  &quot;Acl&quot;: {
+    &quot;device&quot;: [
+      {
+        &quot;TopicPattern&quot;: &quot;device/{clientid}/#&quot;,
+        &quot;Publish&quot;: true,
+        &quot;Subscribe&quot;: true
+      }
+    ]
+  }
+}
+</code></pre>
+<h3 id="transports-réseau">Transports réseau</h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+<th style="text-align: right;">Valeur par défaut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Mqtt:Port</code></td>
+<td>Port du transport MQTT TCP</td>
+<td style="text-align: right;"><code>1883</code></td>
+</tr>
+<tr>
+<td><code>Mqtt:TlsPort</code></td>
+<td>Port du transport MQTT TLS</td>
+<td style="text-align: right;"><code>8883</code></td>
+</tr>
+<tr>
+<td><code>Mqtt:EnableTls</code></td>
+<td>Active le transport TLS</td>
+<td style="text-align: right;"><code>false</code></td>
+</tr>
+<tr>
+<td><code>Mqtt:ConnectionBacklog</code></td>
+<td>Taille de la file d'attente des connexions</td>
+<td style="text-align: right;"><code>100</code></td>
+</tr>
+<tr>
+<td><code>Mqtt:MaxConnections</code></td>
+<td>Nombre maximal de connexions configuré</td>
+<td style="text-align: right;"><code>500</code></td>
+</tr>
+<tr>
+<td><code>Mqtt:PersistentSessions</code></td>
+<td>Active les sessions persistantes</td>
+<td style="text-align: right;"><code>true</code></td>
+</tr>
+<tr>
+<td><code>Mqtt:WebSocket:Enable</code></td>
+<td>Active le transport WebSocket</td>
+<td style="text-align: right;"><code>false</code></td>
+</tr>
+<tr>
+<td><code>Mqtt:WebSocket:Port</code></td>
+<td>Port HTTP du transport WebSocket</td>
+<td style="text-align: right;"><code>8080</code></td>
+</tr>
+<tr>
+<td><code>Mqtt:WebSocket:Path</code></td>
+<td>Chemin de l'endpoint WebSocket</td>
+<td style="text-align: right;"><code>/mqtt</code></td>
+</tr>
+<tr>
+<td><code>Mqtt:WebSocket:TlsPort</code></td>
+<td>Port HTTPS du transport WebSocket</td>
+<td style="text-align: right;"><code>8081</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="authentification-et-rôles">Authentification et rôles</h3>
+<p>En mode <code>Credentials</code>, chaque entrée de <code>Auth:Users</code> définit un <code>Username</code>, un <code>PasswordHash</code> et une liste de <code>Roles</code>.</p>
+<p>En mode <code>Anonymous</code>, le broker n'exige pas d'identifiants. Les rôles définis dans <code>Auth:AnonymousRoles</code> sont néanmoins utilisés pour évaluer les règles ACL.</p>
+<h3 id="règles-acl">Règles ACL</h3>
+<p>Une règle ACL associe un rôle à un <code>TopicPattern</code> :</p>
+<ul>
+<li><code>Publish</code> autorise ou refuse la publication ;</li>
+<li><code>Subscribe</code> autorise ou refuse l'abonnement ;</li>
+<li><code>+</code> correspond à exactement un niveau de topic ;</li>
+<li><code>#</code> correspond à zéro ou plusieurs niveaux ;</li>
+<li><code>{clientid}</code> est remplacé par l'identifiant du client.</li>
+</ul>
+<h2 id="générer-un-hash-de-mot-de-passe">Générer un hash de mot de passe</h2>
+<p>L'outil <code>PasswordHashGenerator</code> demande interactivement un nom d'utilisateur et un mot de passe masqué. Le hash produit est au format <code>{salt_base64}.{hash_base64}</code> et peut être copié dans <code>Auth:Users</code>.</p>
+<pre><code class="lang-powershell">dotnet run --project tools/PasswordHashGenerator
+</code></pre>
+<p>L'algorithme utilise PBKDF2-HMAC-SHA256 avec 100 000 itérations, un sel de 16 octets et un condensat de 32 octets.</p>
+<h2 id="utiliser-nodus-cli">Utiliser nodus-cli</h2>
+<h3 id="publier-un-message">Publier un message</h3>
+<pre><code class="lang-powershell">nodus-cli publish -t &quot;sensor/temperature&quot; -m &quot;23.5&quot;
+nodus-cli publish -h &quot;192.168.1.10&quot; -p 1883 -t &quot;sensor/humidity&quot; -m &quot;60&quot;
+nodus-cli publish -t &quot;device01/status&quot; -m &quot;online&quot; -q 1 -r
+nodus-cli publish -t &quot;secure/data&quot; -m &quot;message&quot; -u &quot;device01&quot; -P &quot;password&quot;
+</code></pre>
+<h3 id="sabonner-à-des-messages">S'abonner à des messages</h3>
+<pre><code class="lang-powershell">nodus-cli subscribe -t &quot;sensor/#&quot;
+nodus-cli subscribe -t &quot;sensor/+/temperature&quot; -t &quot;device/+/status&quot;
+nodus-cli subscribe -t &quot;sensor/#&quot; -u &quot;monitoring&quot; -P &quot;password&quot; -q 1
+</code></pre>
+<p>Le client affiche le topic et la charge utile de chaque message reçu. Son fonctionnement interactif s'interrompt avec <code>Ctrl+C</code>.</p>
+<h2 id="sécurité">Sécurité</h2>
+<ul>
+<li>Utiliser le mode <code>Credentials</code> pour un déploiement exposant le broker à des clients non fiables.</li>
+<li>Ne pas stocker de mot de passe en clair dans un fichier de configuration.</li>
+<li>Protéger le fichier contenant les empreintes et le certificat PFX.</li>
+<li>Restreindre les rôles et les topics au strict nécessaire.</li>
+<li>Activer TLS lorsque les connexions traversent un réseau non maîtrisé.</li>
+<li>Ne pas exposer les topics internes du broker aux clients non administrateurs.</li>
+<li>Ajuster la protection anti force brute en fonction de l'environnement d'exploitation.</li>
+</ul>
+<h2 id="tests">Tests</h2>
+<h3 id="tests-unitaires">Tests unitaires</h3>
+<p>Les tests de sécurité ne nécessitent pas de broker actif :</p>
+<pre><code class="lang-powershell">dotnet test tests/nodus-broker.Tests/nodus-broker.Tests.csproj `
+  --filter &quot;FullyQualifiedName~Security&quot;
+</code></pre>
+<p>Ils couvrent notamment :</p>
+<ul>
+<li>la génération et la vérification des empreintes PBKDF2 ;</li>
+<li>le seuil et l'expiration du verrouillage anti force brute ;</li>
+<li>l'évaluation des règles ACL et des wildcards MQTT.</li>
+</ul>
+<h3 id="tests-dintégration">Tests d'intégration</h3>
+<p>Les tests d'intégration utilisent un broker accessible sur <code>localhost:1883</code>. Le broker doit être démarré dans un autre terminal avec une configuration compatible :</p>
+<pre><code class="lang-powershell"># Terminal 1
+dotnet run --project src/nodus-broker
+
+# Terminal 2
+dotnet test tests/nodus-broker.Tests/nodus-broker.Tests.csproj `
+  --filter &quot;FullyQualifiedName~Integration&quot;
+</code></pre>
+<p>Pour produire un rapport de couverture :</p>
+<pre><code class="lang-powershell">dotnet test tests/nodus-broker.Tests/nodus-broker.Tests.csproj `
+  --collect:&quot;XPlat Code Coverage&quot;
+</code></pre>
+<h2 id="documentation-de-lapi">Documentation de l'API</h2>
+<p>La référence API contient les types et membres publics extraits par DocFX à partir des commentaires XML du code source. Les principaux points d'entrée sont :</p>
+<ul>
+<li><a class="xref" href="api/MqttBroker.MqttBrokerService.html">MqttBrokerService</a> : orchestration du broker, de l'authentification et des contrôles ACL ;</li>
+<li><a class="xref" href="api/MqttBroker.MqttBrokerHostedService.html">MqttBrokerHostedService</a> : intégration du broker dans le cycle de vie de l'hôte ASP.NET Core ;</li>
+<li><a class="xref" href="api/MqttBroker.Security.TopicAclValidator.html">TopicAclValidator</a> : évaluation des droits de publication et d'abonnement ;</li>
+<li><a class="xref" href="api/MqttBroker.Security.BruteForceGuard.html">BruteForceGuard</a> : protection anti force brute ;</li>
+<li><a class="xref" href="api/MqttBroker.Security.PasswordHasher.html">PasswordHasher</a> : génération et vérification des empreintes PBKDF2 ;</li>
+<li><a class="xref" href="api/Server.Services.BrokerLauncher.html">BrokerLauncher</a> : démarrage et arrêt du broker par le lanceur.</li>
+</ul>
+<h2 id="générer-cette-documentation">Générer cette documentation</h2>
+<p>Depuis la racine du dépôt :</p>
+<pre><code class="lang-powershell">docfx tools/docfx/docfx.json
+</code></pre>
+<p>Le site généré se trouve dans <code>doc/_site</code>. Pour le consulter localement :</p>
+<pre><code class="lang-powershell">docfx serve tools/docfx/docfx.json
+</code></pre>
+<h2 id="licence">Licence</h2>
+<p>Le projet est distribué sous licence MIT. Le texte complet de la licence est disponible dans le fichier <code>LICENSE</code> à la racine du dépôt.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Copyright © 2026 Raffarin Pascal. Licensed under the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

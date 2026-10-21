@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class SysStatsUptimePublisher | Documentation Broker MQTT nodus-broker </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class SysStatsUptimePublisher | Documentation Broker MQTT nodus-broker ">
+      
+      <meta name="description" content="Service h&#233;berg&#233; () charg&#233; de publier p&#233;riodiquement les statistiques d&#39;uptime du broker MQTT sur le topic syst&#232;me $SYS/nodus-broker/uptime.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/praffarin/nodus-broker/new/develop/apiSpec/new?filename=MqttBroker_SysStatsUptimePublisher.md&amp;value=---%0Auid%3A%20MqttBroker.SysStatsUptimePublisher%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="nodus-broker">
+            nodus-broker
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="MqttBroker.SysStatsUptimePublisher">
+
+
+
+  <h1 id="MqttBroker_SysStatsUptimePublisher" data-uid="MqttBroker.SysStatsUptimePublisher" class="text-break">
+Class SysStatsUptimePublisher  <a class="header-action link-secondary" title="View source" href="https://github.com/praffarin/nodus-broker/blob/develop/src/nodus-broker/SysStatsUptimePublisher.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="MqttBroker.html">MqttBroker</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>nodus-broker.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Service hébergé (<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.hosting.backgroundservice">BackgroundService</a>) chargé de publier
+périodiquement les statistiques d'uptime du broker MQTT
+sur le topic système <code>$SYS/nodus-broker/uptime</code>.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class SysStatsUptimePublisher : BackgroundService, IHostedService, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.hosting.backgroundservice">BackgroundService</a></div>
+      <div><span class="xref">SysStatsUptimePublisher</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.hosting.ihostedservice">IHostedService</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.hosting.backgroundservice.dispose">BackgroundService.Dispose()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.hosting.backgroundservice.startasync">BackgroundService.StartAsync(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.hosting.backgroundservice.stopasync">BackgroundService.StopAsync(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.hosting.backgroundservice.executetask">BackgroundService.ExecuteTask</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+  <h2 id="MqttBroker_SysStatsUptimePublisher_examples">Examples</h2>
+  <p>Enregistrement dans le pipeline d'injection de dépendances
+(<code>Program.cs</code>) :</p>
+<pre><code class="lang-csharp">builder.Services.AddHostedService&lt;SysStatsUptimePublisher&gt;();</code></pre>
+
+
+  <h2 id="MqttBroker_SysStatsUptimePublisher_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>
+Ce service s'exécute en tâche de fond dès le démarrage de l'hôte ASP.NET Core
+(via <code>AddHostedService</code>). Il utilise un <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.periodictimer">PeriodicTimer</a>
+de 60 secondes pour déclencher l'appel à
+<a class="xref" href="MqttBroker.MqttBrokerService.html#MqttBroker_MqttBrokerService_PublishSysStatsUptimeAsync">PublishSysStatsUptimeAsync()</a>.
+</p>
+<p>
+Le <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.periodictimer">PeriodicTimer</a> a été choisi plutôt qu'une boucle
+<code>Task.Delay</code> car il ne dérive pas et respecte proprement
+l'annulation via <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>.
+</p>
+<p>
+Les exceptions levées lors de la publication sont journalisées en
+<code>Warning</code> et n'interrompent pas la boucle : le service continue
+de fonctionner même si une publication échoue ponctuellement.
+</p>
+<p>
+L'intervalle de publication (60 s) est défini en constante interne
+et pourra être rendu configurable dans une version ultérieure.
+</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="MqttBroker_SysStatsUptimePublisher__ctor_" data-uid="MqttBroker.SysStatsUptimePublisher.#ctor*"></a>
+
+  <h3 id="MqttBroker_SysStatsUptimePublisher__ctor_MqttBroker_MqttBrokerService_Microsoft_Extensions_Logging_ILogger_MqttBroker_SysStatsUptimePublisher__" data-uid="MqttBroker.SysStatsUptimePublisher.#ctor(MqttBroker.MqttBrokerService,Microsoft.Extensions.Logging.ILogger{MqttBroker.SysStatsUptimePublisher})">
+  SysStatsUptimePublisher(MqttBrokerService, ILogger&lt;SysStatsUptimePublisher&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/praffarin/nodus-broker/blob/develop/src/nodus-broker/SysStatsUptimePublisher.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initialise une nouvelle instance de <a class="xref" href="MqttBroker.SysStatsUptimePublisher.html">SysStatsUptimePublisher</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SysStatsUptimePublisher(MqttBrokerService broker, ILogger&lt;SysStatsUptimePublisher&gt; logger)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>broker</code> <a class="xref" href="MqttBroker.MqttBrokerService.html">MqttBrokerService</a></dt>
+    <dd><p>Instance du service broker MQTT exposant
+<a class="xref" href="MqttBroker.MqttBrokerService.html#MqttBroker_MqttBrokerService_PublishSysStatsUptimeAsync">PublishSysStatsUptimeAsync()</a>.
+Ne doit pas être <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+    <dt><code>logger</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a class="xref" href="MqttBroker.SysStatsUptimePublisher.html">SysStatsUptimePublisher</a>&gt;</dt>
+    <dd><p>Journaliseur utilisé pour tracer les erreurs de publication.
+Ne doit pas être <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Levée si <code class="paramref">broker</code> ou <code class="paramref">logger</code>
+est <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+  </dl>
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="MqttBroker_SysStatsUptimePublisher_ExecuteAsync_" data-uid="MqttBroker.SysStatsUptimePublisher.ExecuteAsync*"></a>
+
+  <h3 id="MqttBroker_SysStatsUptimePublisher_ExecuteAsync_System_Threading_CancellationToken_" data-uid="MqttBroker.SysStatsUptimePublisher.ExecuteAsync(System.Threading.CancellationToken)">
+  ExecuteAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/praffarin/nodus-broker/blob/develop/src/nodus-broker/SysStatsUptimePublisher.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Boucle principale du service hébergé : publie l'uptime du broker
+toutes les <span class="xref">MqttBroker.SysStatsUptimePublisher.PublishInterval</span> secondes jusqu'à l'annulation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override Task ExecuteAsync(CancellationToken stoppingToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stoppingToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Jeton d'annulation déclenché par l'hôte lors de l'arrêt de l'application.
+Il interrompt immédiatement <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.periodictimer.waitfornexttickasync">WaitForNextTickAsync(CancellationToken)</a>
+sans attendre la fin de l'intervalle en cours.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Une <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> représentant l'exécution de la boucle.
+La tâche se termine lorsque <code class="paramref">stoppingToken</code> est annulé.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="MqttBroker_SysStatsUptimePublisher_ExecuteAsync_System_Threading_CancellationToken__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+Les exceptions levées par
+<a class="xref" href="MqttBroker.MqttBrokerService.html#MqttBroker_MqttBrokerService_PublishSysStatsUptimeAsync">PublishSysStatsUptimeAsync()</a> sont
+capturées et journalisées en <code>Warning</code> afin de ne pas
+interrompre la boucle de publication.
+</p>
+<p>
+L'annulation via <code class="paramref">stoppingToken</code> se traduit par
+une <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.operationcanceledexception">OperationCanceledException</a> levée par
+<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.periodictimer.waitfornexttickasync">WaitForNextTickAsync(CancellationToken)</a>, propagée
+naturellement à l'hôte.
+</p>
+</div>
+
+
+
+
+  <h2 id="seealso">See Also</h2>
+  <div class="seealso">
+      <div><a class="xref" href="MqttBroker.MqttBrokerService.html">MqttBrokerService</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.hosting.backgroundservice">BackgroundService</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.periodictimer">PeriodicTimer</a></div>
+  </div>
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Copyright © 2026 Raffarin Pascal. Licensed under the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

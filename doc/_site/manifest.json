@@ -1,0 +1,345 @@
+{
+  "source_base_path": "D:/0_DEV/nodus-broker/tools/docfx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "../../doc/img/nodus_broker_logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "img/nodus_broker_logo.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../../doc/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "../../doc/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/MqttBroker.Configuration.AclRule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MqttBroker.Configuration.AclRule.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MqttBroker.Configuration.AclRule",
+      "Summary": "<p sourcefile=\"generated/api/MqttBroker.Configuration.AclRule.yml\" sourcestartlinenumber=\"1\">Règle ACL (Access Control List) définissant les autorisations sur un pattern de topic.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/MqttBroker.Configuration.AuthOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MqttBroker.Configuration.AuthOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MqttBroker.Configuration.AuthOptions",
+      "Summary": "<p sourcefile=\"generated/api/MqttBroker.Configuration.AuthOptions.yml\" sourcestartlinenumber=\"1\">Options de configuration de l'authentification.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/MqttBroker.Configuration.MqttOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MqttBroker.Configuration.MqttOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MqttBroker.Configuration.MqttOptions",
+      "Summary": "<p sourcefile=\"generated/api/MqttBroker.Configuration.MqttOptions.yml\" sourcestartlinenumber=\"1\">Options de configuration du serveur MQTT.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/MqttBroker.Configuration.MqttUser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MqttBroker.Configuration.MqttUser.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MqttBroker.Configuration.MqttUser",
+      "Summary": "<p sourcefile=\"generated/api/MqttBroker.Configuration.MqttUser.yml\" sourcestartlinenumber=\"1\">Représente un utilisateur MQTT avec ses identifiants et rôles.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/MqttBroker.Configuration.SecurityOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MqttBroker.Configuration.SecurityOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MqttBroker.Configuration.SecurityOptions",
+      "Summary": "<p sourcefile=\"generated/api/MqttBroker.Configuration.SecurityOptions.yml\" sourcestartlinenumber=\"1\">Options de configuration de la protection anti brute-force.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/MqttBroker.Configuration.WebSocketOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MqttBroker.Configuration.WebSocketOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MqttBroker.Configuration.WebSocketOptions",
+      "Summary": "<p sourcefile=\"generated/api/MqttBroker.Configuration.WebSocketOptions.yml\" sourcestartlinenumber=\"1\">Options de configuration du transport MQTT sur WebSocket.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/MqttBroker.Configuration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MqttBroker.Configuration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MqttBroker.Configuration",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/MqttBroker.MqttBrokerHostedService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MqttBroker.MqttBrokerHostedService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MqttBroker.MqttBrokerHostedService",
+      "Summary": "<p sourcefile=\"generated/api/MqttBroker.MqttBrokerHostedService.yml\" sourcestartlinenumber=\"1\">Service hébergé responsable du cycle de vie applicatif du broker MQTT.</p>\n<p sourcefile=\"generated/api/MqttBroker.MqttBrokerHostedService.yml\" sourcestartlinenumber=\"3\">IMPORTANT :\nAvec MQTTnet.AspNetCore (AddMqttServer + UseMqttServer dans Program.cs),\nle démarrage effectif du transport TCP et WebSocket est piloté par le\npipeline Kestrel lui-même (dès que l'hôte ASP.NET Core démarre).</p>\n<p sourcefile=\"generated/api/MqttBroker.MqttBrokerHostedService.yml\" sourcestartlinenumber=\"8\">Ce HostedService ne redémarre donc PAS le serveur : il se contente\nde garantir un arrêt propre (StopAsync) lors d'un SIGTERM / Ctrl+C,\nafin que les sessions persistées soient fermées correctement plutôt\nque tuées brutalement.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/MqttBroker.MqttBrokerService.ClientSession.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MqttBroker.MqttBrokerService.ClientSession.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MqttBroker.MqttBrokerService.ClientSession",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/MqttBroker.MqttBrokerService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MqttBroker.MqttBrokerService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MqttBroker.MqttBrokerService",
+      "Summary": "<p sourcefile=\"generated/api/MqttBroker.MqttBrokerService.yml\" sourcestartlinenumber=\"1\">Service applicatif encapsulant le serveur MQTT (MQTTnet).\nLe MqttServer lui-même est injecté par DI (voir AddMqttServer()\ndans Program.cs), ce qui permet de partager la même instance\nentre le transport TCP natif et le transport WebSocket géré\npar ASP.NET Core / Kestrel.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/MqttBroker.Security.BruteForceGuard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MqttBroker.Security.BruteForceGuard.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MqttBroker.Security.BruteForceGuard",
+      "Summary": "<p sourcefile=\"generated/api/MqttBroker.Security.BruteForceGuard.yml\" sourcestartlinenumber=\"1\">Service de protection contre les attaques par force brute sur l'authentification.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/MqttBroker.Security.PasswordHasher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MqttBroker.Security.PasswordHasher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MqttBroker.Security.PasswordHasher",
+      "Summary": "<p sourcefile=\"generated/api/MqttBroker.Security.PasswordHasher.yml\" sourcestartlinenumber=\"1\">Service de hachage et de vérification de mots de passe basé sur PBKDF2.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/MqttBroker.Security.TopicAclValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MqttBroker.Security.TopicAclValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MqttBroker.Security.TopicAclValidator",
+      "Summary": "<p sourcefile=\"generated/api/MqttBroker.Security.TopicAclValidator.yml\" sourcestartlinenumber=\"1\">Valide les droits de publication (PUBLISH) et d'abonnement (SUBSCRIBE) d'un client sur un topic donné.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/MqttBroker.Security.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MqttBroker.Security.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MqttBroker.Security",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/MqttBroker.SysStatsUptimePublisher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MqttBroker.SysStatsUptimePublisher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MqttBroker.SysStatsUptimePublisher",
+      "Summary": "<p sourcefile=\"generated/api/MqttBroker.SysStatsUptimePublisher.yml\" sourcestartlinenumber=\"1\">Service hébergé (<xref href=\"Microsoft.Extensions.Hosting.BackgroundService\" data-throw-if-not-resolved=\"false\"></xref>) chargé de publier\npériodiquement les statistiques d'uptime du broker MQTT\nsur le topic système <code>$SYS/nodus-broker/uptime</code>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/MqttBroker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MqttBroker.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MqttBroker",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/PasswordHashGenerator.PasswordHasher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PasswordHashGenerator.PasswordHasher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "PasswordHashGenerator.PasswordHasher",
+      "Summary": "<p sourcefile=\"generated/api/PasswordHashGenerator.PasswordHasher.yml\" sourcestartlinenumber=\"1\">Service de hachage et de vérification de mots de passe basé sur PBKDF2.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/PasswordHashGenerator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PasswordHashGenerator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "PasswordHashGenerator",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/Server.Services.BrokerLauncher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Server.Services.BrokerLauncher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Server.Services.BrokerLauncher",
+      "Summary": "<p sourcefile=\"generated/api/Server.Services.BrokerLauncher.yml\" sourcestartlinenumber=\"1\">Service de lancement et d'arrêt du broker MQTT nodus-broker.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "generated/api/Server.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Server.Services.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Server.Services",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "generated/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
