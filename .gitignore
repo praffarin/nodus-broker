@@ -58,3 +58,4 @@ nunit-*.xml
 
 # Specific
 **/docfx/generated
+**/dist/
